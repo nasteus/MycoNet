@@ -3,19 +3,47 @@ package net.myconet.mesh.bridge
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import com.google.gson.Gson
+import net.myconet.mesh.MainActivity
 import net.myconet.mesh.MycoNetApplication
 import net.myconet.mesh.model.MeshMessage
 import net.myconet.mesh.protocol.MeshPeer
 import net.myconet.mesh.protocol.RoutingLog
 import net.myconet.mesh.service.MeshForegroundService
 
-class HybridBridge(private val webView: WebView) {
+class HybridBridge(
+    private val activity: MainActivity,
+    private val webView: WebView
+) {
 
     private val gson = Gson()
 
     @JavascriptInterface
     fun getSelfNodeId(): String {
         return MycoNetApplication.nodeId
+    }
+
+    @JavascriptInterface
+    fun isMeshRunning(): Boolean {
+        return MeshForegroundService.activeService != null
+    }
+
+    @JavascriptInterface
+    fun setMeshRunning(enable: Boolean): Boolean {
+        activity.runOnUiThread {
+            if (enable) {
+                activity.startMeshService()
+            } else {
+                activity.stopMeshService()
+            }
+        }
+        return true
+    }
+
+    @JavascriptInterface
+    fun stopAndExit() {
+        activity.runOnUiThread {
+            activity.stopMeshAndExit()
+        }
     }
 
     @JavascriptInterface
@@ -65,6 +93,11 @@ class HybridBridge(private val webView: WebView) {
     fun dispatchPeers(peers: List<MeshPeer>) {
         val json = gson.toJson(peers)
         dispatchWebEvent("peers", json)
+    }
+
+    fun dispatchMeshState(isRunning: Boolean) {
+        val json = gson.toJson(mapOf("running" to isRunning))
+        dispatchWebEvent("mesh_state", json)
     }
 
     private fun dispatchWebEvent(eventName: String, json: String) {

@@ -5,17 +5,30 @@ echo             MYCONET OFF-GRID MESH DEPLOY
 echo ========================================================
 echo.
 
-set ADB="C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools\adb.exe"
-
+set ADB="%LOCALAPPDATA%\Android\Sdk\platform-tools\adb.exe"
 if not exist %ADB% (
-    echo [EROARE] Nu am gasit adb.exe in %ADB%!
-    pause
-    exit /b 1
+    where adb >nul 2>nul
+    if %ERRORLEVEL% EQU 0 (
+        set ADB=adb
+    ) else (
+        echo [EROARE] Nu am gasit adb.exe in %ADB% sau in PATH!
+        pause
+        exit /b 1
+    )
 )
 
 echo [1/3] Compilare Frontend WebApp Svelte + Tailwind...
 cd /d "%~dp0web"
-call npm run build
+if not exist node_modules (
+    echo Instalare dependinte npm...
+    call npm.cmd install
+    if %ERRORLEVEL% NEQ 0 (
+        echo [EROARE] npm install a esuat!
+        pause
+        exit /b 1
+    )
+)
+call npm.cmd run build
 if %ERRORLEVEL% NEQ 0 (
     echo [EROARE] Compilarea WebApp a esuat!
     pause
@@ -41,4 +54,3 @@ echo.
 echo ========================================================
 echo   [SUCCES] MycoNet a fost instalat si pornit pe telefon!
 echo ========================================================
-pause

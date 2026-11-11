@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
@@ -15,7 +14,6 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
-import android.view.WindowInsetsController
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -50,11 +48,13 @@ class MainActivity : AppCompatActivity() {
                     hybridBridge.dispatchPeers(peers)
                 }
             }
+            hybridBridge.dispatchMeshState(true)
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
             meshService = null
             isBound = false
+            hybridBridge.dispatchMeshState(false)
         }
     }
 
@@ -72,7 +72,9 @@ class MainActivity : AppCompatActivity() {
             isAppearanceLightStatusBars = true
             isAppearanceLightNavigationBars = true
         }
+        @Suppress("DEPRECATION")
         window.statusBarColor = ContextCompat.getColor(this, android.R.color.white)
+        @Suppress("DEPRECATION")
         window.navigationBarColor = ContextCompat.getColor(this, android.R.color.white)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -84,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun setupWebView() {
-        hybridBridge = HybridBridge(binding.webView)
+        hybridBridge = HybridBridge(this, binding.webView)
 
         // Use WebViewAssetLoader to bypass file:// CORS restrictions for ES modules
         val assetLoader = WebViewAssetLoader.Builder()
@@ -111,6 +113,7 @@ class MainActivity : AppCompatActivity() {
                     meshService?.let {
                         hybridBridge.dispatchPeers(it.meshManager.connectedPeers.values.toList())
                     }
+                    hybridBridge.dispatchMeshState(MeshForegroundService.activeService != null)
                 }
             }
 
@@ -141,6 +144,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun startMeshService() {
+        checkAndRequestPermissions()
+    }
+
+    fun stopMeshService() {
+        if (isBound) {
+            try {
+                unbindService(serviceConnection)
+            } catch (_: Exception) {}
+            isBound = false
+        }
+        val intent = Intent(this, MeshForegroundService::class.java)
+        stopService(intent)
+        meshService = null
+        hybridBridge.dispatchMeshState(false)
+    }
+
+    fun stopMeshAndExit() {
+        stopMeshService()
+        finishAffinity()
+    }
+
     private fun startMeshForegroundService() {
         val intent = Intent(this, MeshForegroundService::class.java)
         ContextCompat.startForegroundService(this, intent)
@@ -150,7 +175,9 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         if (isBound) {
-            unbindService(serviceConnection)
+            try {
+                unbindService(serviceConnection)
+            } catch (_: Exception) {}
             isBound = false
         }
     }
