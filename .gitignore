@@ -1,0 +1,28 @@
+# Android build outputs & caches
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/*.iml
+
+# Node / Web build & dependencies
+web/node_modules/
+web/dist/
+web/.svelte-kit/
+
+# Generated APKs / Bundles
+*.apk
+*.ap_
+*.aab
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.bak

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF0A0E17</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="mesh_emerald">#FF10B981</color>
+    <color name="mesh_dark">#FF0F172A</color>
+</resources>

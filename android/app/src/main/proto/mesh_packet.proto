@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package net.myconet.mesh.proto;
+
+option java_package = "net.myconet.mesh.proto";
+option java_outer_classname = "MeshPacketProto";
+
+enum PacketType {
+  CHAT = 0;
+  PING = 1;
+  NODE_ANNOUNCE = 2;
+  ROUTING_ACK = 3;
+}
+
+message MeshPacket {
+  string message_id = 1;        // Unique message UUID
+  string sender_id = 2;         // Unique Hardware/Node ID of the originator
+  string sender_alias = 3;      // Human-readable node nickname
+  string recipient_id = 4;      // "*" for broadcast, or target Node ID
+  uint32 hop_count = 5;         // Number of hops traveled so far
+  uint32 ttl = 6;               // Time-To-Live remaining (max 15 hops)
+  uint64 timestamp = 7;         // Epoch timestamp in milliseconds
+  PacketType packet_type = 8;   // Type of packet
+  bytes payload = 9;            // Raw byte payload (compressed UTF-8 chat text or data)
+  repeated string path_trace = 10; // Sequence of relay node IDs for topology tracing
+}

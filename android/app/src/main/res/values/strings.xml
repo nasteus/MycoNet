@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MycoNet</string>
+    <string name="channel_id">myconet_mesh_channel</string>
+    <string name="channel_name">MycoNet Mesh Service</string>
+    <string name="notification_title">MycoNet Mesh Active</string>
+    <string name="notification_text">Off-grid mesh router listening for peer packets…</string>
+</resources>
