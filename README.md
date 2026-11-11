@@ -17,6 +17,10 @@ Rețea de comunicare descentralizată, peer-to-peer (P2P) și off-grid pentru di
 
 * [**Ghid de Rootare Motorola Moto g86 Power 5G (XT2527 / MT6878)**](docs/hardware/moto_g86_root_guide.md)  
   *Procedură detaliată pentru deblocare bootloader, rezolvarea erorii `Preflash validation failed` și patch-uire AVB 2.0 cu Magisk v27.*
+* [**Ghid de Restaurare Stoc și Re-blocare Bootloader (XT2527)**](docs/hardware/moto_g86_stock_restore_guide.md)  
+  *Procedură completă de eliminare Magisk, restaurare firmware original și blocare bootloader pentru compatibilitate bancară și vânzare.*
+* [**Configurare Nod Server 24/7 & Protecție Baterie**](docs/hardware/battery_and_server_tuning.md)  
+  *Ghid de utilizare ca server autonom ARM64 și activare a plafonului de încărcare de 80% (Overcharge Protection).*
 * [**Arhitectură: Wi-Fi Mesh vs. Comunicații Celulare Directe (D2D)**](docs/architecture/cellular_vs_wifi_mesh.md)  
   *Analiză tehnică privind limitările modemurilor celulare de consum și modul în care MycoNet realizează comunicația directă off-grid.*
 
