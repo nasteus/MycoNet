@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1948.7737499999998 950.6499999999999" width="1948.7737499999998" height="950.6499999999999" style="--bg:#18181B;--fg:#F4F4F5;--line:#71717A;--muted:#A1A1AA;--surface:#27272A;--border:#3F3F46;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<g class="subgraph" data-id="AP" data-label="Procesorul Principal (AP - Cortex A78/A55)">
+  <rect x="40" y="40" width="565.5289999999999" height="385.40000000000003" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="40" width="565.5289999999999" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="52" y="54" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Procesorul Principal (AP - Cortex A78/A55)</text>
+</g>
+<g class="subgraph" data-id="BUS" data-label="Magistrala Hardware Internă">
+  <rect x="653.5289999999999" y="378.5" width="235.488" height="113.80000000000001" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="653.5289999999999" y="378.5" width="235.488" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="665.5289999999999" y="392.5" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Magistrala Hardware Internă</text>
+</g>
+<g class="subgraph" data-id="BP" data-label="Modemul Radio (BP - Baseband MediaTek MT6878)">
+  <rect x="937.0169999999999" y="445.40000000000003" width="737.3117499999998" height="436.79999999999995" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="937.0169999999999" y="445.40000000000003" width="737.3117499999998" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="949.0169999999999" y="459.40000000000003" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Modemul Radio (BP - Baseband MediaTek MT6878)</text>
+</g>
+<polyline class="edge" data-from="LINUX" data-to="BUS" data-style="thick" data-arrow-start="true" data-arrow-end="true" points="341.1042499999999,409.40000000000003 341.10424999999987,425.40000000000003 341.10424999999987,435.4 653.5289999999999,435.4" fill="none" stroke="var(--_line)" stroke-width="2" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="BUS" data-to="RTOS" data-style="thick" data-arrow-start="true" data-arrow-end="true" points="889.0169999999998,435.4 1346.76975,435.4 1346.76975,445.40000000000003 1346.76975,606.6 1384.7263333333333,606.6 1384.7263333333333,642.6" fill="none" stroke="var(--_line)" stroke-width="2" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="RF" data-to="ANT" data-style="thick" data-arrow-start="true" data-arrow-end="true" points="1269.799,866.2 1269.799,882.2 1269.799,892.2 1722.3287499999997,892.2" fill="none" stroke="var(--_line)" stroke-width="2" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="APP" data-to="ANDROID" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="200.72199999999992,120.9 200.72199999999995,177.35000000000002" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="ANDROID" data-to="RIL" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="200.72199999999995,214.25 200.72199999999995,270.70000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="ROOT" data-to="LINUX" data-style="dotted" data-arrow-start="false" data-arrow-end="true" data-label="Poate accesa fișierele /dev" points="481.4864999999999,222.70000000000002 481.48649999999986,319.6 368.4734166666666,319.6 368.4734166666666,355.6" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="RIL" data-to="LINUX" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="200.72199999999995,307.6 200.72199999999995,319.6 313.73508333333325,319.6 313.73508333333325,355.6" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="RTOS" data-to="STACK" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="1427.4094999999998,679.5 1427.4094999999998,691.5 1307.9126666666666,691.5 1307.9126666666666,727.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="NVRAM" data-to="STACK" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="1112.1885,679.5 1112.1885,691.5 1231.6853333333333,691.5 1231.6853333333333,727.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="FUSE" data-to="RTOS" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Verifică integritatea la boot" points="1508.04925,526.3000000000001 1508.04925,606.6 1470.0926666666664,606.6 1470.0926666666664,642.6" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="STACK" data-to="RF" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="1269.799,781.3 1269.799,829.3" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="ROOT" data-to="LINUX" data-label="Poate accesa fișierele /dev">
+  <rect x="408.98649999999986" y="274.00000000000006" width="144.76600000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="481.3694999999999" y="289.15000000000003" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Poate accesa fișierele /dev</text>
+</g>
+<g class="edge-label" data-from="FUSE" data-to="RTOS" data-label="Verifică integritatea la boot">
+  <rect x="1437.5492499999998" y="569.3000000000001" width="140.60800000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1507.85325" y="584.45" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Verifică integritatea la boot</text>
+</g>
+<g class="node" data-id="ANT" data-label="Antene Celulare (4G / 5G)" data-shape="rectangle">
+  <rect x="1722.3287499999997" y="873.75" width="186.44499999999996" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1815.5512499999998" y="892.2" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Antene Celulare (4G / 5G)</text>
+</g>
+<g class="node" data-id="APP" data-label="Aplicația Ta (MycoNet / Java / Kotlin)" data-shape="rectangle">
+  <rect x="71.93149999999999" y="84" width="257.5809999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="200.72199999999992" y="102.45" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Aplicația Ta (MycoNet / Java / Kotlin)</text>
+</g>
+<g class="node" data-id="ANDROID" data-label="Android Framework &amp; TelephonyManager" data-shape="rectangle">
+  <rect x="56" y="177.35000000000002" width="289.4439999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="200.72199999999995" y="195.8" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Android Framework &amp; TelephonyManager</text>
+</g>
+<g class="node" data-id="RIL" data-label="Daemon RIL (mtkfusionrild)" data-shape="rectangle">
+  <rect x="102.68299999999994" y="270.70000000000005" width="196.078" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="200.72199999999992" y="289.15000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Daemon RIL (mtkfusionrild)</text>
+</g>
+<g class="node" data-id="ROOT" data-label="ACCES ROOT (Magisk / UID 0)
+Se oprește aici!" data-shape="rectangle">
+  <rect x="373.44399999999996" y="168.9" width="216.08499999999995" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="481.4864999999999" y="195.8" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="481.4864999999999" dy="-3.9000000000000012">ACCES ROOT (Magisk / UID 0)</tspan><tspan x="481.4864999999999" dy="16.900000000000002">Se oprește aici!</tspan></text>
+</g>
+<g class="node" data-id="LINUX" data-label="Kernel Linux (6.1 GKI)
+Drivere CCCI" data-shape="rectangle">
+  <rect x="258.9967499999999" y="355.6" width="164.21499999999997" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="341.10424999999987" y="382.5" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="341.10424999999987" dy="-3.9000000000000012">Kernel Linux (6.1 GKI)</tspan><tspan x="341.10424999999987" dy="16.900000000000002">Drivere CCCI</tspan></text>
+</g>
+<g class="node" data-id="CCCI" data-label="MediaTek CCCI Bus
+(/dev/ccci_*, /dev/ttyC0-C6)" data-shape="rectangle">
+  <rect x="669.5289999999999" y="422.5" width="203.488" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="771.2729999999999" y="449.4" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="771.2729999999999" dy="-3.9000000000000012">MediaTek CCCI Bus</tspan><tspan x="771.2729999999999" dy="16.900000000000002">(/dev/ccci_*, /dev/ttyC0-C6)</tspan></text>
+</g>
+<g class="node" data-id="RTOS" data-label="RTOS Modem (Nucleus / OS Separat)" data-shape="rectangle">
+  <rect x="1299.36" y="642.6" width="256.09899999999993" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1427.4094999999998" y="661.0500000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">RTOS Modem (Nucleus / OS Separat)</text>
+</g>
+<g class="node" data-id="STACK" data-label="&quot;Stivă Radio 3GPP (NR17 / Rel. 17)
+[RRC, PDCP, RLC, MAC, PHY" data-shape="rectangle">
+  <rect x="1155.4579999999999" y="727.5" width="228.68199999999996" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1269.7989999999998" y="754.4" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="1269.7989999999998" dy="-3.9000000000000012">&quot;Stivă Radio 3GPP (NR17 / Rel. 17)</tspan><tspan x="1269.7989999999998" dy="16.900000000000002">[RRC, PDCP, RLC, MAC, PHY</tspan></text>
+</g>
+<g class="node" data-id="NVRAM" data-label="Parametri NVRAM (Blocare SideLink / Licențe)" data-shape="rectangle">
+  <rect x="953.0169999999999" y="642.6" width="318.34299999999996" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1112.1885" y="661.0500000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Parametri NVRAM (Blocare SideLink / Licențe)</text>
+</g>
+<g class="node" data-id="FUSE" data-label="Hardware Secure Boot (eFuses / RSA Keys)" data-shape="rectangle">
+  <rect x="1357.76975" y="489.40000000000003" width="300.55899999999997" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1508.04925" y="507.85" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Hardware Secure Boot (eFuses / RSA Keys)</text>
+</g>
+<g class="node" data-id="RF" data-label="Circuite Front-End RF &amp; Amplificatoare (PA)" data-shape="rectangle">
+  <rect x="1123.5949999999998" y="829.3" width="292.40799999999996" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1269.7989999999998" y="847.75" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Circuite Front-End RF &amp; Amplificatoare (PA)</text>
+</g>
+</svg>
